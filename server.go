@@ -4,13 +4,15 @@ import (
 	"encoding/base64"
 	"flag"
 	"fmt"
-	pb "github.com/leisurelicht/grpc-demo/protobuf"
 	grpc "google.golang.org/grpc"
+	pb "./protobuf"
 	"io"
 	"net"
 )
 
-type authServer struct{}
+type authServer struct{
+	pb.UnimplementedAUTHServer
+}
 
 func (*authServer) AuthLogin(stream pb.AUTH_AuthLoginServer) error {
 	for {
